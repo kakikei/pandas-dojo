@@ -1,0 +1,16 @@
+ItemID,ItemName,Category,Price,Stock,Supplier
+101,Laptop,Electronics,89000,25,TechCorp
+102,Mouse,Electronics,2500,150,TechCorp
+103,Keyboard,Electronics,7500,80,TechCorp
+104,Monitor,Electronics,35000,40,DisplayCo
+105,Desk,Furniture,45000,15,FurniturePlus
+106,Chair,Furniture,25000,30,FurniturePlus
+107,Notebook,Stationery,500,500,PaperWorld
+108,Pen,Stationery,150,1000,PaperWorld
+109,Headphones,Electronics,12000,60,TechCorp
+110,Webcam,Electronics,8000,35,TechCorp
+111,Lamp,Furniture,3500,45,FurniturePlus
+112,Stapler,Stationery,800,200,PaperWorld
+113,Printer,Electronics,28000,20,TechCorp
+114,Bookshelf,Furniture,35000,12,FurniturePlus
+115,Eraser,Stationery,100,800,PaperWorld

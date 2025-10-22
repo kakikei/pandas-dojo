@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pandas Dojo - Pandas学習アプリ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐼 Pandas Dojo</h1>
+            <p>Pandasをマスターする学習アプリ</p>
+        </header>
+
+        <div class="main-content">
+            <!-- サイドバー: 問題一覧 -->
+            <aside class="sidebar">
+                <h2>問題一覧</h2>
+                <div id="problem-list" class="problem-list">
+                    <!-- 問題リストがここに表示される -->
+                </div>
+            </aside>
+
+            <!-- メインエリア: 問題と回答 -->
+            <main class="main-area">
+                <div id="problem-detail" class="problem-detail">
+                    <div class="welcome-message">
+                        <h2>Pandas Dojoへようこそ！</h2>
+                        <p>左のサイドバーから問題を選択してください。</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- CodeMirror -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+
+    <!-- アプリケーションロジック -->
+    <script src="app.js"></script>
+</body>
+</html>

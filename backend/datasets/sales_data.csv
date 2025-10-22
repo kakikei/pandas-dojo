@@ -1,0 +1,11 @@
+Product,Sales,Quantity,Region
+Apple,1500,120,East
+Banana,800,200,West
+Orange,1200,150,East
+Apple,2000,180,West
+Banana,600,100,East
+Orange,1800,220,West
+Apple,900,90,South
+Banana,1100,140,South
+Orange,1400,170,East
+Apple,1600,130,North

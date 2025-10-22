@@ -1,0 +1,16 @@
+Name,Age,Department,Salary,YearsOfService,Performance
+Alice,28,Engineering,85000,3,A
+Bob,35,Sales,72000,8,B
+Charlie,42,Engineering,95000,12,A
+David,31,Marketing,68000,5,C
+Eve,29,Sales,70000,4,B
+Frank,38,Engineering,88000,9,A
+Grace,26,Marketing,62000,2,B
+Henry,45,Sales,78000,15,A
+Iris,33,Engineering,90000,7,A
+Jack,27,Marketing,65000,3,C
+Karen,40,Sales,75000,11,B
+Leo,36,Engineering,92000,10,A
+Mary,30,Marketing,67000,6,B
+Nancy,44,Sales,80000,14,A
+Oliver,32,Engineering,87000,8,B

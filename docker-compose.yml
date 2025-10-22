@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    container_name: pandas-dojo-backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app/backend
+      - ./requirements.txt:/app/requirements.txt
+    environment:
+      - FLASK_APP=backend/app.py
+      - FLASK_ENV=development
+    command: python backend/app.py
+    networks:
+      - pandas-dojo-network
+
+  frontend:
+    build: .
+    container_name: pandas-dojo-frontend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./frontend:/app/frontend
+    working_dir: /app/frontend
+    command: python -m http.server 8000
+    networks:
+      - pandas-dojo-network
+
+networks:
+  pandas-dojo-network:
+    driver: bridge
