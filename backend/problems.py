@@ -10,6 +10,7 @@ PROBLEMS = [
         'hint': 'head()メソッドを使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# dfの最初の5行を表示\nresult = ',
+        'expected_answer': 'result = df.head()',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -23,6 +24,7 @@ PROBLEMS = [
         'hint': 'df["列名"] または df.列名 で列を選択できます。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Product列を選択\nresult = ',
+        'expected_answer': 'result = df["Product"]',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -35,6 +37,7 @@ PROBLEMS = [
         'hint': 'df[df["列名"] > 値] のように条件を指定します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Salesが1000以上の行を抽出\nresult = ',
+        'expected_answer': 'result = df[df["Sales"] >= 1000]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -48,6 +51,7 @@ PROBLEMS = [
         'hint': 'mean()メソッドを使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Sales列の平均値を計算\nresult = ',
+        'expected_answer': 'result = df["Sales"].mean()',
         'validation': {
             'variable': 'result',
         }
@@ -59,6 +63,7 @@ PROBLEMS = [
         'hint': 'groupby()とsum()を組み合わせます。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Productでグループ化してSalesの合計を計算\nresult = ',
+        'expected_answer': 'result = df.groupby("Product")["Sales"].sum()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -71,6 +76,7 @@ PROBLEMS = [
         'hint': 'df["新しい列名"] = 計算式 で列を追加できます。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Sales_with_tax列を追加（Sales * 1.1）\n',
+        'expected_answer': 'result = df.copy()\nresult["Sales_with_tax"] = df["Sales"] * 1.1',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -84,6 +90,7 @@ PROBLEMS = [
         'hint': 'sort_values()メソッドを使用します。ascending=Falseで降順になります。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Salesで降順ソート\nresult = ',
+        'expected_answer': 'result = df.sort_values("Sales", ascending=False)',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -97,6 +104,7 @@ PROBLEMS = [
         'hint': 'fillna()メソッドを使用します。',
         'dataset': 'sales_data_with_nan.csv',
         'initial_code': '# 欠損値を0で埋める\nresult = ',
+        'expected_answer': 'result = df.fillna(0)',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -111,6 +119,7 @@ PROBLEMS = [
         'hint': 'df[["列名1", "列名2"]] の形式で複数列を選択できます。',
         'dataset': 'sales_data.csv',
         'initial_code': '# ProductとSales列を選択\nresult = ',
+        'expected_answer': 'result = df[["Product", "Sales"]]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -124,6 +133,7 @@ PROBLEMS = [
         'hint': 'drop()メソッドを使用します。axis=1を指定すると列を削除できます。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Quantity列を削除\nresult = ',
+        'expected_answer': 'result = df.drop("Quantity", axis=1)',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -137,6 +147,7 @@ PROBLEMS = [
         'hint': 'rename()メソッドを使用します。columns={"旧名": "新名"}の形式で指定します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Sales列の名前をRevenueに変更\nresult = ',
+        'expected_answer': 'result = df.rename(columns={"Sales": "Revenue"})',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -150,6 +161,7 @@ PROBLEMS = [
         'hint': 'shape属性を使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# DataFrameの形状を取得\nresult = ',
+        'expected_answer': 'result = df.shape',
         'validation': {
             'variable': 'result',
             'check_function': lambda x: isinstance(x, tuple) and len(x) == 2
@@ -162,6 +174,7 @@ PROBLEMS = [
         'hint': 'tail()メソッドに引数を指定します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# 最後の3行を表示\nresult = ',
+        'expected_answer': 'result = df.tail(3)',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -176,6 +189,7 @@ PROBLEMS = [
         'hint': '条件を&で結合します。各条件は()で囲む必要があります。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Salesが1000以上かつRegionがEastの行を抽出\nresult = ',
+        'expected_answer': 'result = df[(df["Sales"] >= 1000) & (df["Region"] == "East")]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -189,6 +203,7 @@ PROBLEMS = [
         'hint': '条件を|で結合するか、isin()メソッドを使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# ProductがAppleまたはOrangeの行を抽出\nresult = ',
+        'expected_answer': 'result = df[df["Product"].isin(["Apple", "Orange"])]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -202,6 +217,7 @@ PROBLEMS = [
         'hint': 'str.contains()メソッドを使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Regionに"orth"が含まれる行を抽出\nresult = ',
+        'expected_answer': 'result = df[df["Region"].str.contains("orth")]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -215,6 +231,7 @@ PROBLEMS = [
         'hint': 'between()メソッドを使用するか、複数条件を&で結合します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Salesが1000以上1500以下の行を抽出\nresult = ',
+        'expected_answer': 'result = df[df["Sales"].between(1000, 1500)]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -228,6 +245,7 @@ PROBLEMS = [
         'hint': 'idxmax()メソッドで最大値のインデックスを取得し、loc[]で行を抽出します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Salesが最大の行を抽出\nresult = ',
+        'expected_answer': 'result = df.loc[df["Sales"].idxmax()]',
         'validation': {
             'variable': 'result',
             'check_function': lambda x: isinstance(x, __import__('pandas').Series) or isinstance(x, __import__('pandas').DataFrame)
@@ -241,6 +259,7 @@ PROBLEMS = [
         'hint': 'sum()メソッドを複数列に対して適用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# SalesとQuantityの合計を計算\nresult = ',
+        'expected_answer': 'result = df[["Sales", "Quantity"]].sum()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -253,6 +272,7 @@ PROBLEMS = [
         'hint': 'median()メソッドを使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Sales列の中央値を計算\nresult = ',
+        'expected_answer': 'result = df["Sales"].median()',
         'validation': {
             'variable': 'result',
         }
@@ -264,6 +284,7 @@ PROBLEMS = [
         'hint': 'std()メソッドを使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Sales列の標準偏差を計算\nresult = ',
+        'expected_answer': 'result = df["Sales"].std()',
         'validation': {
             'variable': 'result',
         }
@@ -275,6 +296,7 @@ PROBLEMS = [
         'hint': 'unique()メソッドを使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Product列のユニーク値を取得\nresult = ',
+        'expected_answer': 'result = df["Product"].unique()',
         'validation': {
             'variable': 'result',
             'check_function': lambda x: len(x) == 3 and 'Apple' in x
@@ -287,6 +309,7 @@ PROBLEMS = [
         'hint': 'value_counts()メソッドを使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Region列の値をカウント\nresult = ',
+        'expected_answer': 'result = df["Region"].value_counts()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -300,6 +323,7 @@ PROBLEMS = [
         'hint': 'groupby()とmean()を組み合わせます。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Productごとの平均Salesを計算\nresult = ',
+        'expected_answer': 'result = df.groupby("Product")["Sales"].mean()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -312,6 +336,7 @@ PROBLEMS = [
         'hint': 'groupby()とmax()を組み合わせます。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Regionごとの最大Salesを計算\nresult = ',
+        'expected_answer': 'result = df.groupby("Region")["Sales"].max()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -324,6 +349,7 @@ PROBLEMS = [
         'hint': 'groupby()とcount()またはsize()を組み合わせます。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Productごとの行数をカウント\nresult = ',
+        'expected_answer': 'result = df.groupby("Product").size()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -336,6 +362,7 @@ PROBLEMS = [
         'hint': 'groupby()に列名のリストを渡します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# ProductとRegionでグループ化してSalesの合計を計算\nresult = ',
+        'expected_answer': 'result = df.groupby(["Product", "Region"])["Sales"].sum()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -348,6 +375,7 @@ PROBLEMS = [
         'hint': 'agg()メソッドに関数のリストを渡します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Productごとの合計と平均を計算\nresult = ',
+        'expected_answer': 'result = df.groupby("Product")["Sales"].agg(["sum", "mean"])',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -361,6 +389,7 @@ PROBLEMS = [
         'hint': 'df["新列名"] = df["列1"] / df["列2"] の形式で計算できます。',
         'dataset': 'sales_data.csv',
         'initial_code': '# UnitPrice列を追加（Sales / Quantity）\n',
+        'expected_answer': 'result = df.copy()\nresult["UnitPrice"] = df["Sales"] / df["Quantity"]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -374,6 +403,7 @@ PROBLEMS = [
         'hint': 'apply()メソッドやラムダ関数を使用するか、単純に*2でも可能です。',
         'dataset': 'sales_data.csv',
         'initial_code': '# DoubleSales列を追加（Sales * 2）\n',
+        'expected_answer': 'result = df.copy()\nresult["DoubleSales"] = df["Sales"] * 2',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -387,6 +417,7 @@ PROBLEMS = [
         'hint': 'str.upper()メソッドを使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Product列を大文字に変換\nresult = ',
+        'expected_answer': 'result = df["Product"].str.upper()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -400,6 +431,7 @@ PROBLEMS = [
         'hint': 'np.where()を使用するか、条件分岐でマスクを使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Category列を追加（Salesが1000以上ならHigh、それ以外はLow）\n',
+        'expected_answer': 'result = df.copy()\nresult["Category"] = np.where(df["Sales"] >= 1000, "High", "Low")',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -413,6 +445,7 @@ PROBLEMS = [
         'hint': 'reset_index()メソッドを使用します。drop=Trueで元のインデックスを削除できます。',
         'dataset': 'sales_data.csv',
         'initial_code': '# インデックスをリセット\nresult = ',
+        'expected_answer': 'result = df.reset_index(drop=True)',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -426,6 +459,7 @@ PROBLEMS = [
         'hint': 'isnull().sum()を使用します。',
         'dataset': 'sales_data_with_nan.csv',
         'initial_code': '# 各列の欠損値をカウント\nresult = ',
+        'expected_answer': 'result = df.isnull().sum()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -438,6 +472,7 @@ PROBLEMS = [
         'hint': 'dropna()メソッドを使用します。',
         'dataset': 'sales_data_with_nan.csv',
         'initial_code': '# 欠損値を含む行を削除\nresult = ',
+        'expected_answer': 'result = df.dropna()',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -451,6 +486,7 @@ PROBLEMS = [
         'hint': 'fillna()メソッドに平均値を渡します。',
         'dataset': 'sales_data_with_nan.csv',
         'initial_code': '# Sales列の欠損値を平均値で埋める\nresult = ',
+        'expected_answer': 'result = df.copy()\nresult["Sales"] = df["Sales"].fillna(df["Sales"].mean())',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -463,6 +499,7 @@ PROBLEMS = [
         'hint': 'fillna()メソッドにmethod="ffill"を指定します。',
         'dataset': 'sales_data_with_nan.csv',
         'initial_code': '# 欠損値を前方補完\nresult = ',
+        'expected_answer': 'result = df.fillna(method="ffill")',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -475,6 +512,7 @@ PROBLEMS = [
         'hint': 'dropna()メソッドにsubset引数で列を指定します。',
         'dataset': 'sales_data_with_nan.csv',
         'initial_code': '# Sales列が欠損している行を削除\nresult = ',
+        'expected_answer': 'result = df.dropna(subset=["Sales"])',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -488,6 +526,7 @@ PROBLEMS = [
         'hint': 'sort_values()に複数の列名とascendingのリストを渡します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# ProductとSalesでソート\nresult = ',
+        'expected_answer': 'result = df.sort_values(["Product", "Sales"], ascending=[True, False])',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -500,6 +539,7 @@ PROBLEMS = [
         'hint': 'sort_index()メソッドを使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# インデックスで降順ソート\nresult = ',
+        'expected_answer': 'result = df.sort_index(ascending=False)',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -512,6 +552,7 @@ PROBLEMS = [
         'hint': 'rank()メソッドを使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Rank列を追加（Salesのランキング）\n',
+        'expected_answer': 'result = df.copy()\nresult["Rank"] = df["Sales"].rank()',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -525,6 +566,7 @@ PROBLEMS = [
         'hint': 'nlargest()メソッドを使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Salesの上位3件を抽出\nresult = ',
+        'expected_answer': 'result = df.nlargest(3, "Sales")',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -538,6 +580,7 @@ PROBLEMS = [
         'hint': 'nsmallest()メソッドを使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Salesの下位2件を抽出\nresult = ',
+        'expected_answer': 'result = df.nsmallest(2, "Sales")',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -552,6 +595,7 @@ PROBLEMS = [
         'hint': 'groupby()とmean()を組み合わせます。',
         'dataset': 'employee_data.csv',
         'initial_code': '# 部門ごとの平均給与を計算\nresult = ',
+        'expected_answer': 'result = df.groupby("Department")["Salary"].mean()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -564,6 +608,7 @@ PROBLEMS = [
         'hint': '条件式でフィルタリングします。',
         'dataset': 'employee_data.csv',
         'initial_code': '# 給与が80000以上の従業員を抽出\nresult = ',
+        'expected_answer': 'result = df[df["Salary"] >= 80000]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -577,6 +622,7 @@ PROBLEMS = [
         'hint': 'sort_values()メソッドでascending=Falseを指定します。',
         'dataset': 'employee_data.csv',
         'initial_code': '# 年齢で降順ソート\nresult = ',
+        'expected_answer': 'result = df.sort_values("Age", ascending=False)',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -589,6 +635,7 @@ PROBLEMS = [
         'hint': 'groupby()とsize()を組み合わせます。',
         'dataset': 'employee_data.csv',
         'initial_code': '# 部門ごとの従業員数をカウント\nresult = ',
+        'expected_answer': 'result = df.groupby("Department").size()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -601,6 +648,7 @@ PROBLEMS = [
         'hint': 'フィルタリング後に特定の列を選択します。',
         'dataset': 'employee_data.csv',
         'initial_code': '# 勤続10年以上の従業員名を取得\nresult = ',
+        'expected_answer': 'result = df[df["YearsOfService"] >= 10]["Name"]',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -613,6 +661,7 @@ PROBLEMS = [
         'hint': '条件式でフィルタリングします。',
         'dataset': 'employee_data.csv',
         'initial_code': '# パフォーマンスがAの従業員を抽出\nresult = ',
+        'expected_answer': 'result = df[df["Performance"] == "A"]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -626,6 +675,7 @@ PROBLEMS = [
         'hint': 'groupby()とmax()を組み合わせます。',
         'dataset': 'employee_data.csv',
         'initial_code': '# 部門別最高給与を計算\nresult = ',
+        'expected_answer': 'result = df.groupby("Department")["Salary"].max()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -638,6 +688,7 @@ PROBLEMS = [
         'hint': 'mean()メソッドを使用します。',
         'dataset': 'employee_data.csv',
         'initial_code': '# 年齢の平均値を計算\nresult = ',
+        'expected_answer': 'result = df["Age"].mean()',
         'validation': {
             'variable': 'result',
         }
@@ -650,6 +701,7 @@ PROBLEMS = [
         'hint': 'sum(axis=1)で行ごとの合計を計算できます。',
         'dataset': 'student_scores.csv',
         'initial_code': '# Total列を追加（4科目の合計）\n',
+        'expected_answer': 'result = df.copy()\nresult["Total"] = df[["Math", "English", "Science", "History"]].sum(axis=1)',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -663,6 +715,7 @@ PROBLEMS = [
         'hint': 'mean(axis=1)で行ごとの平均を計算できます。',
         'dataset': 'student_scores.csv',
         'initial_code': '# Average列を追加（4科目の平均）\n',
+        'expected_answer': 'result = df.copy()\nresult["Average"] = df[["Math", "English", "Science", "History"]].mean(axis=1)',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -676,6 +729,7 @@ PROBLEMS = [
         'hint': 'max()メソッドを使用します。',
         'dataset': 'student_scores.csv',
         'initial_code': '# 数学の最高得点を計算\nresult = ',
+        'expected_answer': 'result = df["Math"].max()',
         'validation': {
             'variable': 'result',
         }
@@ -687,6 +741,7 @@ PROBLEMS = [
         'hint': 'groupby()とmean()を組み合わせます。',
         'dataset': 'student_scores.csv',
         'initial_code': '# クラスごとの数学平均点を計算\nresult = ',
+        'expected_answer': 'result = df.groupby("Class")["Math"].mean()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -699,6 +754,7 @@ PROBLEMS = [
         'hint': '条件式でフィルタリングします。',
         'dataset': 'student_scores.csv',
         'initial_code': '# 数学が90点以上の学生を抽出\nresult = ',
+        'expected_answer': 'result = df[df["Math"] >= 90]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -712,6 +768,7 @@ PROBLEMS = [
         'hint': '複数列を選択してmean()を適用します。',
         'dataset': 'student_scores.csv',
         'initial_code': '# 全科目の平均点を計算\nresult = ',
+        'expected_answer': 'result = df[["Math", "English", "Science", "History"]].mean().mean()',
         'validation': {
             'variable': 'result',
         }
@@ -723,6 +780,7 @@ PROBLEMS = [
         'hint': '条件式でフィルタリングします。',
         'dataset': 'student_scores.csv',
         'initial_code': '# Taroの情報を抽出\nresult = ',
+        'expected_answer': 'result = df[df["Name"] == "Taro"]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -735,6 +793,7 @@ PROBLEMS = [
         'hint': 'idxmax()でインデックスを取得し、loc[]で名前を取得します。',
         'dataset': 'student_scores.csv',
         'initial_code': '# 数学の得点が最も高い学生名を取得\nresult = ',
+        'expected_answer': 'result = df.loc[df["Math"].idxmax(), "Name"]',
         'validation': {
             'variable': 'result',
         }
@@ -747,6 +806,7 @@ PROBLEMS = [
         'hint': 'groupby()とsum()を組み合わせます。',
         'dataset': 'store_inventory.csv',
         'initial_code': '# カテゴリごとの在庫合計を計算\nresult = ',
+        'expected_answer': 'result = df.groupby("Category")["Stock"].sum()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -759,6 +819,7 @@ PROBLEMS = [
         'hint': '条件式でフィルタリングします。',
         'dataset': 'store_inventory.csv',
         'initial_code': '# 価格が10000以上の商品を抽出\nresult = ',
+        'expected_answer': 'result = df[df["Price"] >= 10000]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -772,6 +833,7 @@ PROBLEMS = [
         'hint': 'df["新列"] = df["列1"] * df["列2"] の形式で計算します。',
         'dataset': 'store_inventory.csv',
         'initial_code': '# TotalValue列を追加（Price * Stock）\n',
+        'expected_answer': 'result = df.copy()\nresult["TotalValue"] = df["Price"] * df["Stock"]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -785,6 +847,7 @@ PROBLEMS = [
         'hint': 'groupby()とsize()を組み合わせます。',
         'dataset': 'store_inventory.csv',
         'initial_code': '# サプライヤーごとの商品数をカウント\nresult = ',
+        'expected_answer': 'result = df.groupby("Supplier").size()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -797,6 +860,7 @@ PROBLEMS = [
         'hint': '条件式でフィルタリングします。',
         'dataset': 'store_inventory.csv',
         'initial_code': '# 在庫が50以下の商品を抽出\nresult = ',
+        'expected_answer': 'result = df[df["Stock"] <= 50]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -810,6 +874,7 @@ PROBLEMS = [
         'hint': 'groupby()とmean()を組み合わせます。',
         'dataset': 'store_inventory.csv',
         'initial_code': '# カテゴリごとの平均価格を計算\nresult = ',
+        'expected_answer': 'result = df.groupby("Category")["Price"].mean()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -822,6 +887,7 @@ PROBLEMS = [
         'hint': '条件式でフィルタリングします。',
         'dataset': 'store_inventory.csv',
         'initial_code': '# Electronicsカテゴリの商品を抽出\nresult = ',
+        'expected_answer': 'result = df[df["Category"] == "Electronics"]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -835,6 +901,7 @@ PROBLEMS = [
         'hint': 'idxmax()でインデックスを取得し、loc[]で商品名を取得します。',
         'dataset': 'store_inventory.csv',
         'initial_code': '# 最も在庫が多い商品名を取得\nresult = ',
+        'expected_answer': 'result = df.loc[df["Stock"].idxmax(), "ItemName"]',
         'validation': {
             'variable': 'result',
         }
@@ -847,6 +914,7 @@ PROBLEMS = [
         'hint': 'groupby()とmean()を組み合わせます。',
         'dataset': 'weather_data.csv',
         'initial_code': '# 都市ごとの平均気温を計算\nresult = ',
+        'expected_answer': 'result = df.groupby("City")["Temperature"].mean()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -859,6 +927,7 @@ PROBLEMS = [
         'hint': '条件式でフィルタリングします。',
         'dataset': 'weather_data.csv',
         'initial_code': '# 降水量がある日を抽出\nresult = ',
+        'expected_answer': 'result = df[df["Precipitation"] > 0]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -872,6 +941,7 @@ PROBLEMS = [
         'hint': 'idxmax()でインデックスを取得し、loc[]で行を取得します。',
         'dataset': 'weather_data.csv',
         'initial_code': '# 最高気温の日の情報を取得\nresult = ',
+        'expected_answer': 'result = df.loc[df["Temperature"].idxmax()]',
         'validation': {
             'variable': 'result',
         }
@@ -883,6 +953,7 @@ PROBLEMS = [
         'hint': 'groupby()とsum()を組み合わせます。',
         'dataset': 'weather_data.csv',
         'initial_code': '# 都市ごとの総降水量を計算\nresult = ',
+        'expected_answer': 'result = df.groupby("City")["Precipitation"].sum()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -895,6 +966,7 @@ PROBLEMS = [
         'hint': '条件式でフィルタリングします。',
         'dataset': 'weather_data.csv',
         'initial_code': '# 湿度が70以上の日を抽出\nresult = ',
+        'expected_answer': 'result = df[df["Humidity"] >= 70]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -908,6 +980,7 @@ PROBLEMS = [
         'hint': '条件式でフィルタリングします。',
         'dataset': 'weather_data.csv',
         'initial_code': '# 東京の天気データを抽出\nresult = ',
+        'expected_answer': 'result = df[df["City"] == "Tokyo"]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -921,6 +994,7 @@ PROBLEMS = [
         'hint': 'mean()メソッドを使用します。',
         'dataset': 'weather_data.csv',
         'initial_code': '# 風速の平均を計算\nresult = ',
+        'expected_answer': 'result = df["WindSpeed"].mean()',
         'validation': {
             'variable': 'result',
         }
@@ -932,6 +1006,7 @@ PROBLEMS = [
         'hint': 'var()メソッドを使用します。',
         'dataset': 'weather_data.csv',
         'initial_code': '# 気温の分散を計算\nresult = ',
+        'expected_answer': 'result = df["Temperature"].var()',
         'validation': {
             'variable': 'result',
         }
@@ -944,6 +1019,7 @@ PROBLEMS = [
         'hint': 'df["新列"] = df["列1"] * (1 - df["列2"]) の形式で計算します。',
         'dataset': 'complex_sales.csv',
         'initial_code': '# FinalPrice列を追加（割引後価格）\n',
+        'expected_answer': 'result = df.copy()\nresult["FinalPrice"] = df["Price"] * (1 - df["Discount"])',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -957,6 +1033,7 @@ PROBLEMS = [
         'hint': '先にFinalPriceを計算してから、それにQuantityを掛けます。',
         'dataset': 'complex_sales.csv',
         'initial_code': '# Revenue列を追加（売上金額）\n',
+        'expected_answer': 'result = df.copy()\nresult["FinalPrice"] = df["Price"] * (1 - df["Discount"])\nresult["Revenue"] = result["FinalPrice"] * df["Quantity"]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -970,6 +1047,7 @@ PROBLEMS = [
         'hint': '売上列を作成してからgroupby()とsum()を使用します。',
         'dataset': 'complex_sales.csv',
         'initial_code': '# カテゴリごとの売上合計を計算\n',
+        'expected_answer': 'result = (df["Price"] * df["Quantity"]).groupby(df["Category"]).sum()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -982,6 +1060,7 @@ PROBLEMS = [
         'hint': 'groupby()とsize()を組み合わせます。',
         'dataset': 'complex_sales.csv',
         'initial_code': '# 地域ごとの注文数をカウント\nresult = ',
+        'expected_answer': 'result = df.groupby("Region").size()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -994,6 +1073,7 @@ PROBLEMS = [
         'hint': '計算列を作成するか、条件式内で直接計算します。',
         'dataset': 'complex_sales.csv',
         'initial_code': '# 売上が100000以上の注文を抽出\n',
+        'expected_answer': 'result = df[df["Price"] * df["Quantity"] >= 100000]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -1006,6 +1086,7 @@ PROBLEMS = [
         'hint': '条件式でフィルタリングします。',
         'dataset': 'complex_sales.csv',
         'initial_code': '# 割引率が10%以上の注文を抽出\nresult = ',
+        'expected_answer': 'result = df[df["Discount"] >= 0.1]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -1019,6 +1100,7 @@ PROBLEMS = [
         'hint': 'groupby()とsize()を組み合わせます。',
         'dataset': 'complex_sales.csv',
         'initial_code': '# 顧客ごとの注文回数をカウント\nresult = ',
+        'expected_answer': 'result = df.groupby("CustomerID").size()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -1031,6 +1113,7 @@ PROBLEMS = [
         'hint': '文字列として比較するか、pd.to_datetime()で日付型に変換します。',
         'dataset': 'complex_sales.csv',
         'initial_code': '# 2024-01-20以降の注文を抽出\nresult = ',
+        'expected_answer': 'result = df[df["Date"] >= "2024-01-20"]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -1044,6 +1127,7 @@ PROBLEMS = [
         'hint': 'pivot_table()メソッドを使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# ピボットテーブルを作成\nresult = ',
+        'expected_answer': 'result = df.pivot_table(values="Sales", index="Product", columns="Region", aggfunc="sum")',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -1056,6 +1140,7 @@ PROBLEMS = [
         'hint': 'pd.crosstab()を使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# クロス集計を実行\nresult = ',
+        'expected_answer': 'result = pd.crosstab(df["Product"], df["Region"])',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -1068,6 +1153,7 @@ PROBLEMS = [
         'hint': 'cumsum()メソッドを使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Salesの累積合計を計算\nresult = ',
+        'expected_answer': 'result = df["Sales"].cumsum()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -1080,6 +1166,7 @@ PROBLEMS = [
         'hint': 'quantile()メソッドを使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# 75パーセンタイルを計算\nresult = ',
+        'expected_answer': 'result = df["Sales"].quantile(0.75)',
         'validation': {
             'variable': 'result',
         }
@@ -1091,6 +1178,7 @@ PROBLEMS = [
         'hint': 'rolling()メソッドとmean()を組み合わせます。',
         'dataset': 'sales_data.csv',
         'initial_code': '# 3期間移動平均を計算\nresult = ',
+        'expected_answer': 'result = df["Sales"].rolling(window=3).mean()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -1103,6 +1191,7 @@ PROBLEMS = [
         'hint': 'フィルタリング後にgroupby()とsum()を適用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Salesが1000以上の行でProductごとのQuantity合計を計算\n',
+        'expected_answer': 'result = df[df["Sales"] >= 1000].groupby("Product")["Quantity"].sum()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -1115,6 +1204,7 @@ PROBLEMS = [
         'hint': 'agg()メソッドに["sum", "mean", "max"]を渡します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Productごとの複数統計量を計算\nresult = ',
+        'expected_answer': 'result = df.groupby("Product")["Sales"].agg(["sum", "mean", "max"])',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -1127,6 +1217,7 @@ PROBLEMS = [
         'hint': 'pd.cut()を使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# SalesCategory列を追加（3区間に分割）\n',
+        'expected_answer': 'result = df.copy()\nresult["SalesCategory"] = pd.cut(df["Sales"], bins=3, labels=["Low", "Medium", "High"])',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -1140,6 +1231,7 @@ PROBLEMS = [
         'hint': 'duplicated()メソッドを使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# 重複行を抽出\nresult = ',
+        'expected_answer': 'result = df[df.duplicated()]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -1152,6 +1244,7 @@ PROBLEMS = [
         'hint': 'drop_duplicates()メソッドにsubset引数を指定します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Product列で重複を削除\nresult = ',
+        'expected_answer': 'result = df.drop_duplicates(subset=["Product"])',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -1164,6 +1257,7 @@ PROBLEMS = [
         'hint': 'np.select()またはpd.cut()を使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Grade列を追加（条件分岐）\n',
+        'expected_answer': 'result = df.copy()\nconditions = [df["Sales"] >= 1500, df["Sales"] >= 1000]\nchoices = ["A", "B"]\nresult["Grade"] = np.select(conditions, choices, default="C")',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -1177,6 +1271,7 @@ PROBLEMS = [
         'hint': 'corr()メソッドを使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# SalesとQuantityの相関係数を計算\nresult = ',
+        'expected_answer': 'result = df["Sales"].corr(df["Quantity"])',
         'validation': {
             'variable': 'result',
         }
@@ -1188,6 +1283,7 @@ PROBLEMS = [
         'hint': 'astype("category").cat.codesを使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# RegionCode列を追加（カテゴリコード）\n',
+        'expected_answer': 'result = df.copy()\nresult["RegionCode"] = df["Region"].astype("category").cat.codes',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -1201,6 +1297,7 @@ PROBLEMS = [
         'hint': 'groupby()とrank()を組み合わせます。',
         'dataset': 'sales_data.csv',
         'initial_code': '# ProductRank列を追加（Productごとのランキング）\n',
+        'expected_answer': 'result = df.copy()\nresult["ProductRank"] = df.groupby("Product")["Sales"].rank()',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -1214,6 +1311,7 @@ PROBLEMS = [
         'hint': 'groupby()とtransform()を使用し、(x - x.min()) / (x.max() - x.min())で正規化します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# NormalizedSales列を追加（Productごとに正規化）\n',
+        'expected_answer': 'result = df.copy()\nresult["NormalizedSales"] = df.groupby("Product")["Sales"].transform(lambda x: (x - x.min()) / (x.max() - x.min()))',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -1227,6 +1325,7 @@ PROBLEMS = [
         'hint': 'groupby()とagg()で lambda x: x.max() - x.min() を使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Productごとの販売額の範囲を計算\nresult = ',
+        'expected_answer': 'result = df.groupby("Product")["Sales"].agg(lambda x: x.max() - x.min())',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -1239,6 +1338,7 @@ PROBLEMS = [
         'hint': 'groupby()で複数列を指定し、as_index=Trueのままにします。',
         'dataset': 'sales_data.csv',
         'initial_code': '# マルチインデックスで集計\nresult = ',
+        'expected_answer': 'result = df.groupby(["Product", "Region"])["Sales"].sum()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -1251,6 +1351,7 @@ PROBLEMS = [
         'hint': 'groupby()とagg()で lambda x: x.mode()[0] を使用します。',
         'dataset': 'employee_data.csv',
         'initial_code': '# 部門ごとの最頻Performance評価を取得\nresult = ',
+        'expected_answer': 'result = df.groupby("Department")["Performance"].agg(lambda x: x.mode()[0])',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -1263,6 +1364,7 @@ PROBLEMS = [
         'hint': 'pct_change()メソッドを使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Salesの変化率を計算\nresult = ',
+        'expected_answer': 'result = df["Sales"].pct_change()',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -1275,6 +1377,7 @@ PROBLEMS = [
         'hint': '平均と標準偏差を計算し、条件式で範囲外の値をフィルタリングします。',
         'dataset': 'sales_data.csv',
         'initial_code': '# 外れ値を持つ行を抽出\n',
+        'expected_answer': 'mean = df["Sales"].mean()\nstd = df["Sales"].std()\nresult = df[(df["Sales"] < mean - 2*std) | (df["Sales"] > mean + 2*std)]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -1287,6 +1390,7 @@ PROBLEMS = [
         'hint': 'astype()メソッドを使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Quantity列をfloat型に変換\nresult = ',
+        'expected_answer': 'result = df["Quantity"].astype(float)',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -1299,6 +1403,7 @@ PROBLEMS = [
         'hint': 'str[0]またはstr.slice()を使用します。',
         'dataset': 'employee_data.csv',
         'initial_code': '# Initial列を追加（名前の頭文字）\n',
+        'expected_answer': 'result = df.copy()\nresult["Initial"] = df["Name"].str[0]',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -1312,6 +1417,7 @@ PROBLEMS = [
         'hint': 'drop_duplicates()を使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# ProductとRegionのユニークな組み合わせを取得\nresult = ',
+        'expected_answer': 'result = df[["Product", "Region"]].drop_duplicates()',
         'validation': {
             'variable': 'result',
             'type': 'DataFrame',
@@ -1324,6 +1430,7 @@ PROBLEMS = [
         'hint': 'groupby()とapply()でフィルタリングとカウントを行います。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Productごとに1000以上のSalesの数をカウント\n',
+        'expected_answer': 'result = df.groupby("Product").apply(lambda x: (x["Sales"] >= 1000).sum())',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -1336,6 +1443,7 @@ PROBLEMS = [
         'hint': 'groupby()とagg()で lambda x: x.max() - x.min() を使用します。',
         'dataset': 'sales_data.csv',
         'initial_code': '# Productごとの最大値と最小値の差を計算\nresult = ',
+        'expected_answer': 'result = df.groupby("Product")["Sales"].agg(lambda x: x.max() - x.min())',
         'validation': {
             'variable': 'result',
             'type': 'Series',
@@ -1358,7 +1466,21 @@ def get_all_problems():
     ]
 
 def get_problem_by_id(problem_id):
-    """IDで問題を取得"""
+    """IDで問題を取得（検証関数は除外）"""
+    for problem in PROBLEMS:
+        if problem['id'] == problem_id:
+            return {
+                'id': problem['id'],
+                'title': problem['title'],
+                'description': problem['description'],
+                'hint': problem.get('hint', ''),
+                'dataset': problem.get('dataset', ''),
+                'initial_code': problem.get('initial_code', '')
+            }
+    return None
+
+def get_problem_with_validation(problem_id):
+    """IDで問題を取得（検証関数を含む - 内部使用のみ）"""
     for problem in PROBLEMS:
         if problem['id'] == problem_id:
             return problem

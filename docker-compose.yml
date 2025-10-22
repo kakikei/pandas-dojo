@@ -1,18 +1,16 @@
-version: '3.8'
-
 services:
   backend:
     build: .
     container_name: pandas-dojo-backend
     ports:
-      - "5000:5000"
+      - "5001:5001"
     volumes:
       - ./backend:/app/backend
       - ./requirements.txt:/app/requirements.txt
     environment:
       - FLASK_APP=backend/app.py
       - FLASK_ENV=development
-    command: python backend/app.py
+    command: gunicorn --bind 0.0.0.0:5001 --workers 4 --chdir /app backend.app:app
     networks:
       - pandas-dojo-network
 

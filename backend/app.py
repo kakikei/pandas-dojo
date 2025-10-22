@@ -1,13 +1,23 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import sys
-import io
-import traceback
-from code_executor import execute_code
-from problems import get_all_problems, get_problem_by_id
+from backend.code_executor import execute_code
+from backend.problems import get_all_problems, get_problem_by_id
 
 app = Flask(__name__)
 CORS(app)
+
+@app.route('/', methods=['GET'])
+def health_check():
+    """ヘルスチェックエンドポイント"""
+    return jsonify({
+        'status': 'ok',
+        'message': 'Pandas Dojo API is running',
+        'endpoints': {
+            'problems': '/api/problems',
+            'problem_detail': '/api/problems/<id>',
+            'execute': '/api/execute'
+        }
+    })
 
 @app.route('/api/problems', methods=['GET'])
 def get_problems():
@@ -37,4 +47,4 @@ def execute():
     return jsonify(result)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5001)

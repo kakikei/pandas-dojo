@@ -7,8 +7,13 @@ WORKDIR /app
 # 依存関係ファイルをコピー
 COPY requirements.txt .
 
-# 依存関係をインストール
-RUN pip install --no-cache-dir -r requirements.txt
+# ビルドツールを一時的にインストールし、依存関係をインストール
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends gcc g++ && \
+    pip install --no-cache-dir -r requirements.txt && \
+    apt-get purge -y --auto-remove gcc g++ && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # アプリケーションファイルをコピー
 COPY backend/ ./backend/

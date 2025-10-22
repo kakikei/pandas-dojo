@@ -3,7 +3,7 @@ import io
 import traceback
 import pandas as pd
 import numpy as np
-from problems import get_problem_by_id
+from backend.problems import get_problem_by_id, get_problem_with_validation
 
 def execute_code(code, problem_id):
     """
@@ -29,8 +29,8 @@ def execute_code(code, problem_id):
     }
 
     try:
-        # 問題情報を取得
-        problem = get_problem_by_id(problem_id) if problem_id else None
+        # 問題情報を取得（検証用に完全な情報を取得）
+        problem = get_problem_with_validation(problem_id) if problem_id else None
 
         # 実行環境を準備
         namespace = {
@@ -131,7 +131,7 @@ def validate_solution(namespace, validation):
             else:
                 return False, "期待される結果と異なります。"
 
-        return True, "コードは正常に実行されました。"
+        return True, "正解です！"
 
     except Exception as e:
         return False, f"検証中にエラーが発生しました: {str(e)}"

@@ -1,5 +1,5 @@
 // API URL
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'http://localhost:5001/api';
 
 // グローバル変数
 let problems = [];
@@ -144,14 +144,20 @@ async function runCode() {
 
         // 結果を表示
         if (result.success) {
-            outputBox.className = 'output-box success';
-            outputBox.textContent = result.output || 'コードが正常に実行されました。';
-
             // 正誤判定の結果を表示
             if (result.feedback) {
                 feedbackBox.style.display = 'block';
                 feedbackBox.className = result.is_correct ? 'feedback correct' : 'feedback incorrect';
                 feedbackBox.textContent = result.feedback;
+            }
+
+            // 出力がある場合のみ表示
+            if (result.output && result.output.trim()) {
+                outputBox.className = 'output-box success';
+                outputBox.textContent = result.output;
+            } else {
+                // 出力がない場合は出力ボックスを非表示
+                outputContainer.style.display = result.feedback ? 'block' : 'none';
             }
         } else {
             outputBox.className = 'output-box error';
