@@ -4,6 +4,7 @@ import traceback
 import pandas as pd
 import numpy as np
 from backend.problems import get_problem_by_id, get_problem_with_validation
+from backend.validations import validate_result
 
 def execute_code(code, problem_id):
     """
@@ -76,7 +77,7 @@ def validate_solution(namespace, validation):
 
     Args:
         namespace: コード実行後の名前空間
-        validation: 検証ルール
+        validation: 検証ルール（構造化された形式）
 
     Returns:
         tuple: (is_correct, feedback)
@@ -91,47 +92,13 @@ def validate_solution(namespace, validation):
 
         user_result = namespace[expected_var]
 
-        # 型チェック
-        if 'type' in validation:
-            expected_type = validation['type']
-            if expected_type == 'DataFrame' and not isinstance(user_result, pd.DataFrame):
-                return False, "結果はDataFrameである必要があります。"
-            elif expected_type == 'Series' and not isinstance(user_result, pd.Series):
-                return False, "結果はSeriesである必要があります。"
+        # 新しい検証エンジンを使用
+        is_correct = validate_result(validation, user_result)
 
-        # 期待される値と比較
-        if 'expected_value' in validation:
-            expected = validation['expected_value']
-
-            # DataFrameやSeriesの場合
-            if isinstance(user_result, (pd.DataFrame, pd.Series)):
-                if isinstance(expected, dict):
-                    # 辞書から期待されるDataFrame/Seriesを作成
-                    if validation.get('type') == 'Series':
-                        expected_obj = pd.Series(expected)
-                    else:
-                        expected_obj = pd.DataFrame(expected)
-
-                    if user_result.equals(expected_obj):
-                        return True, "正解です！"
-                    else:
-                        return False, f"期待される結果と異なります。\n期待: {expected_obj}\n実際: {user_result}"
-
-            # その他の値の場合
-            elif user_result == expected:
-                return True, "正解です！"
-            else:
-                return False, f"期待される結果: {expected}\n実際の結果: {user_result}"
-
-        # カスタム検証関数
-        if 'check_function' in validation:
-            check_func = validation['check_function']
-            if check_func(user_result):
-                return True, "正解です！"
-            else:
-                return False, "期待される結果と異なります。"
-
-        return True, "正解です！"
+        if is_correct:
+            return True, "正解です！"
+        else:
+            return False, "期待される結果と異なります。"
 
     except Exception as e:
         return False, f"検証中にエラーが発生しました: {str(e)}"
